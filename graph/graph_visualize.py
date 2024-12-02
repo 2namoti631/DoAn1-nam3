@@ -2,7 +2,7 @@ import pandas as pd
 import networkx as nx
 from pyvis.network import Network
 
-def create_reddit_graph(file_path, output_html="reddit_graph.html"):
+def create_reddit_graph(file_path, output_html="post_graph.html"):
     # Đọc dữ liệu từ file CSV
     data = pd.read_csv(file_path)
 
