@@ -2,7 +2,7 @@ import praw
 import csv
 # Lấy dữ liệu theo subreddit 
 # Hàm kết nối và lấy dữ liệu từ Reddit
-def collect_sub_data(subreddit_name, output_file='reddit_data.csv', limit=1000):
+def collect_sub_data(subreddit_name, output_file='reddit_data.csv', limit=30):
   # Thiết lập kết nối đến Reddit
     reddit = praw.Reddit(
         client_id='wqJhXCtoWPylKs0ROJfc8Q',
