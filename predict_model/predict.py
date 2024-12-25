@@ -5,7 +5,7 @@ from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 from xgboost import XGBRegressor
 from sklearn.metrics import mean_squared_error, r2_score
 import streamlit as st
-import io
+import matplotlib.pyplot as plt  # Thêm thư viện matplotlib
 
 # Giao diện Streamlit
 st.title("Phân tích dữ liệu và dự đoán tương tác bài viết")
@@ -58,5 +58,22 @@ if uploaded_file is not None:
     st.write(f"RMSE: {np.sqrt(mse):.2f}")
     st.write(f"R2 Score: {r2:.2f}")
 
-    # Biểu đồ trực quan hóa
-    st.line_chart({"Actual Comments": y_test.values, "Predicted Comments": y_pred})
+    # Vẽ biểu đồ với matplotlib
+    plt.figure(figsize=(10, 6))
+
+    # Vẽ đường màu đỏ cho Actual Comments
+    plt.plot(y_test.values, label="Lượng bình luận thực tế", color='red')
+
+    # Vẽ đường màu xanh dương cho Predicted Comments
+    plt.plot(y_pred, label="Lượng bình luận dự đoán", color='blue')
+
+    # Thêm nhãn cho các trục và tiêu đề
+    plt.xlabel("Chỉ số")
+    plt.ylabel("Số lượng bình luận")
+    plt.title(f"Lượng bình luận thực tế so với dự đoán {model_option}")
+
+    # Hiển thị legend
+    plt.legend()
+
+    # Hiển thị biểu đồ trong Streamlit
+    st.pyplot(plt)
